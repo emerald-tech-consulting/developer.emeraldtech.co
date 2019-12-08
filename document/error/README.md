@@ -135,7 +135,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
   "error_description": "Validate fail",
   "error_status": 400,
   "error_at": 1560957259332,
-  "error_uri": "https://developer.emeraldtech.co/xxx",
+  "error_uri": "https://developer.emeraldtech.co/document/error/",
   "error_fields": [
     {
       "code": "available_email", 
@@ -180,7 +180,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
   "error_status": 409,
   "error_description": "duplicate code \"1234\"",
   "error_at": 1575360940699,
-  "error_uri": "https://developer.emeraldtech.co/xxx",
+  "error_uri": "https://developer.emeraldtech.co/document/error/",
   "error_code": "2B575C06",
   "error_on": "0.2",
   "error_fields": [],

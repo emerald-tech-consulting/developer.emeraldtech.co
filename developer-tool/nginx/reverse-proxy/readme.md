@@ -1,8 +1,8 @@
 # NGINX Reverse Proxy Different Port 
 
 > ### มี app 2 ตัว
-> :88
-> :89
+> - port 88
+> - port 89
 
 ### Step 1 install nginx
 ```sh

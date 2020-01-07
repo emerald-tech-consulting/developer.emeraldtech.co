@@ -2,6 +2,9 @@
 
 > การจัดการข้อผิดพลาดต่าง ๆ ในระบบ
 
+# ตัวอย่าง
+> [https://auth.emeraldtech.co/oauth/v1/token](https://auth.emeraldtech.co/oauth/v1/token)
+
 # Format 
 ทุก ๆ Service จะแสดง `error` โดยมีรูปแบบดังต่อไปนี้
 
@@ -12,9 +15,10 @@
   "error_description": "Require access token in http header \"Authorization\" : \"bearer $TOKEN\"",
   "error_at": 1560939554466,
   "error_uri": "https://developer.emeraldtech.co/document/error/",
-  "error_code": "31db055ecac97230",
+  "error_trace_id": "31db055ecac97230",
   "error_fields": [],
   "error_data" : {},
+  "error_on" : "0.1",
   "state": null
 }
 ```
@@ -23,9 +27,10 @@
 - `error_description` (String) คือ message ที่อธิบายว่า error นี้เกิดจากอะไร  
 - `error_at` (Number) คือ เวลา timestamp ที่เกิด error
 - `error_uri` (String) คือ url เอกสารสำหรับอธิบาย error 
-- `error_code` (String) คือ รหัส (`trace_id`) สำหรับผู้ดูและระบบ (Admin) หรือผู้พัฒนา ไว้ค้นหาตำแหน่งของ error ที่เกิดขึ้นในระบบ 
+- `error_trace_id` (String) คือ รหัส (`trace_id`) สำหรับผู้ดูและระบบ (Admin) หรือผู้พัฒนา ไว้ค้นหาตำแหน่งของ error ที่เกิดขึ้นในระบบ 
 - `error_fields` (Array of Object) ใช้สำหรับกรณี validate input form แล้วเกิด error ขึ้นที่ field ใด field หนึ่ง
 - `error_data` (Object) คือ data ที่ต้องการส่งมาให้ front end ใช้สำหรับการแสดงผล  
+- `error_on` (String) คือ ตัวระบุว่า error เกิดขึ้นที่ไหน อาจจะเป็น ip ของเครื่องที่ run service นั้น ๆ
 - `state` (String) คือ validation state ของ client เพื่อใช้ป้องกัน csrf ซึ่ง server จะส่งกลับไปด้วยกรณีเกิด error (ถ้า client ส่ง parameter นี้มา)
 
 # รายะเอียด (Details)
@@ -105,14 +110,18 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
 > url เอกสารสำหรับอธิบาย error  
 
 - type : `String`
-- nullable : Allow  
+- nullable : Not Allow  
 
-# error_code 
+เช่น  
+
+- [https://developer.emeraldtech.co/document/error/](https://developer.emeraldtech.co/document/error/) 
+
+# error_trace_id 
 
 > รหัส (`trace_id`) สำหรับผู้ดูและระบบ (Admin) หรือผู้พัฒนา ไว้ค้นหาตำแหน่งของ error ที่เกิดขึ้นในระบบ
 
 - type : `String`
-- nullable : Allow   
+- nullable : Not Allow   
 
 เช่น 
 - a01120592219db7e  
@@ -131,7 +140,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
 ```json
 {
   "error": "invalid_request",
-  "error_code": "4afed893447f585c",
+  "error_trace_id": "4afed893447f585c",
   "error_description": "Validate fail",
   "error_status": 400,
   "error_at": 1560957259332,
@@ -154,6 +163,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
     }
   ], 
   "error_data" : {},
+  "error_on" : "0.1",
   "state": "8wC04d/1cW6bE5M="
 }
 ```
@@ -181,7 +191,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
   "error_description": "duplicate code \"1234\"",
   "error_at": 1575360940699,
   "error_uri": "https://developer.emeraldtech.co/document/error/",
-  "error_code": "2B575C06",
+  "error_trace_id": "2B575C06",
   "error_on": "0.2",
   "error_fields": [],
   "error_data": {
@@ -190,6 +200,16 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
   "state": null
 }
 ```
+
+# error_on
+
+> ตัวระบุว่า error เกิดขึ้นที่ไหน อาจจะเป็น ip ของเครื่องที่ run service นั้น ๆ
+
+- type : `String`
+- nullable : Not Allow  
+
+เช่น
+- 2B575C06 
 
 # State
 

@@ -209,7 +209,7 @@ Reference : [https://developer.mozilla.org/th/docs/Web/HTTP/Status](https://deve
 - nullable : Not Allow  
 
 เช่น
-- 2B575C06 
+- 0.1 
 
 # State
 
